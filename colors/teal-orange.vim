@@ -207,7 +207,7 @@ exe "hi! Normal"         .s:fmt_none   .s:fg_o4 .s:bg_back
 exe "hi! Comment"        .s:fmt_none   .s:fg_t3 .s:bg_none
 "       *Comment         any comment
 
-exe "hi! Constant"       .s:fmt_bold   .s:fg_t5 .s:bg_none
+exe "hi! Constant"       .s:fmt_none   .s:fg_t5 .s:bg_none
 "       *Constant        any constant
 "        Character       a character constant: 'c', '\n'
 "        Number          a number constant: 234, 0xff
@@ -217,7 +217,8 @@ exe "hi! Constant"       .s:fmt_bold   .s:fg_t5 .s:bg_none
 exe "hi! String"         .s:fmt_none   .s:fg_t6 .s:bg_none
 "       *String          a string constant: "this is a string"
 
-exe "hi! Identifier"     .s:fmt_none   .s:fg_o2 .s:bg_none
+exe "hi! Identifier"     .s:fmt_none   .s:fg_o3 .s:bg_none
+exe "hi! Function"       .s:fmt_none   .s:fg_o2 .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
@@ -226,23 +227,23 @@ exe "hi! Conditional"    .s:fmt_bold   .s:fg_o1  .s:bg_none
 exe "hi! Repeat"         .s:fmt_bold   .s:fg_o1  .s:bg_none
 exe "hi! Operator"       .s:fmt_none   .s:fg_o2  .s:bg_none
 exe "hi! Label"          .s:fmt_none   .s:fg_o1  .s:bg_none
-exe "hi! Keyword"        .s:fmt_none   .s:fg_o1  .s:bg_none
+exe "hi! Keyword"        .s:fmt_bold   .s:fg_o1  .s:bg_none
 exe "hi! Exception"      .s:fmt_bold   .s:fg_o1  .s:bg_none
 
-exe "hi! PreProc"        .s:fmt_none   .s:fg_t7 .s:bg_none
+exe "hi! PreProc"        .s:fmt_bold   .s:fg_t3 .s:bg_none
 "       *PreProc         generic Preprocessor
 "        Include         preprocessor #include
 "        Define          preprocessor #define
 "        Macro           same as Define
 "        PreCondit       preprocessor #if, #else, #endif, etc.
 
-exe "hi! Type"           .s:fmt_none   .s:fg_o3 .s:bg_none
+exe "hi! Type"           .s:fmt_bold   .s:fg_t7 .s:bg_none
 "       *Type            int, long, char, etc.
 "        StorageClass    static, register, volatile, etc.
 "        Structure       struct, union, enum, etc.
 "        Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_bold   .s:fg_t3 .s:bg_none
+exe "hi! Special"        .s:fmt_bold   .s:fg_t5 .s:bg_none
 "       *Special         any special symbol
 "        SpecialChar     special character in a constant
 "        Tag             you can use CTRL-] on this
@@ -315,6 +316,30 @@ exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_t1
 exe "hi! Cursor"         .s:fmt_none   .s:fg_t4     .s:bg_t0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_o5     .s:bg_none
+
+"}}}
+" yajs.vim JavaScript highlighting "{{{
+" ---------------------------------------------------------------------
+
+" Highlight let, const, var, new as keywords
+exe "hi! javascriptVariable"             .s:fmt_bold .s:fg_o1
+exe "hi! javascriptOperator"             .s:fmt_bold .s:fg_o1
+
+" Don't highlight special variable names as keywords
+for i in ['DOMDoc', 'DOMElem', 'DOMEvent', 'DOMNode', 'DOMStorage', 'Intl',
+    \'Array', 'Date', 'Function', 'JSON', 'ES6Map', 'Math', 'Number', 'Object',
+    \'Promise', 'RegExp', 'ES6Set', 'String', 'Symbol', 'File', 'FileReader',
+    \'FileList', 'Blob', 'URLUtils', 'URL', 'Console', 'Crypto', 'SubtleCrypto',
+    \'Headers', 'Request', 'Response', 'BOMHistory', 'BOMLocation',
+    \'BOMNavigator', 'ServiceWorker', 'BOMWindow', 'XHR']
+  exe 'hi! javascript' .i .'Prop'         .s:fmt_none .s:fg_o3
+  exe 'hi! javascript' .i .'Method'       .s:fmt_none .s:fg_o2
+  exe 'hi! javascript' .i .'StaticProp'   .s:fmt_none .s:fg_o3
+  exe 'hi! javascript' .i .'StaticMethod' .s:fmt_none .s:fg_o2
+endfor
+exe "hi! javascriptDOMStyle"             .s:fmt_none .s:fg_o3
+exe "hi! javascriptDOMEventTargetMethod" .s:fmt_none .s:fg_o2
+exe "hi! javascriptProxyAPI"             .s:fmt_none .s:fg_o2
 
 "}}}
 
