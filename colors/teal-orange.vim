@@ -207,43 +207,51 @@ exe "hi! Normal"         .s:fmt_none   .s:fg_o4 .s:bg_back
 exe "hi! Comment"        .s:fmt_none   .s:fg_t3 .s:bg_none
 "       *Comment         any comment
 
-exe "hi! Constant"       .s:fmt_none   .s:fg_t5 .s:bg_none
+exe "hi! Constant"       .s:fmt_none   .s:fg_o1 .s:bg_none
+exe "hi! Character"      .s:fmt_none   .s:fg_o0 .s:bg_none
+exe "hi! Number"         .s:fmt_bold   .s:fg_o3 .s:bg_none
+exe "hi! Boolean"        .s:fmt_bold   .s:fg_o3 .s:bg_none
+exe "hi! Float"          .s:fmt_bold   .s:fg_o3 .s:bg_none
 "       *Constant        any constant
 "        Character       a character constant: 'c', '\n'
 "        Number          a number constant: 234, 0xff
 "        Boolean         a boolean constant: TRUE, false
 "        Float           a floating point constant: 2.3e10
 
-exe "hi! String"         .s:fmt_none   .s:fg_t6 .s:bg_none
+exe "hi! String"         .s:fmt_none   .s:fg_o0 .s:bg_none
 "       *String          a string constant: "this is a string"
 
 exe "hi! Identifier"     .s:fmt_none   .s:fg_o3 .s:bg_none
-exe "hi! Function"       .s:fmt_none   .s:fg_o2 .s:bg_none
+exe "hi! Function"       .s:fmt_none   .s:fg_o1 .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
-exe "hi! Statement"      .s:fmt_bold   .s:fg_o1  .s:bg_none
-exe "hi! Conditional"    .s:fmt_bold   .s:fg_o1  .s:bg_none
-exe "hi! Repeat"         .s:fmt_bold   .s:fg_o1  .s:bg_none
-exe "hi! Operator"       .s:fmt_none   .s:fg_o2  .s:bg_none
-exe "hi! Label"          .s:fmt_none   .s:fg_o1  .s:bg_none
-exe "hi! Keyword"        .s:fmt_bold   .s:fg_o1  .s:bg_none
-exe "hi! Exception"      .s:fmt_bold   .s:fg_o1  .s:bg_none
+exe "hi! Statement"      .s:fmt_bold   .s:fg_t5  .s:bg_none
+exe "hi! Conditional"    .s:fmt_bold   .s:fg_t5  .s:bg_none
+exe "hi! Repeat"         .s:fmt_bold   .s:fg_t5  .s:bg_none
+exe "hi! Operator"       .s:fmt_bold   .s:fg_t7  .s:bg_none
+exe "hi! Label"          .s:fmt_none   .s:fg_t5  .s:bg_none
+exe "hi! Keyword"        .s:fmt_bold   .s:fg_t5  .s:bg_none
+exe "hi! Exception"      .s:fmt_bold   .s:fg_t5  .s:bg_none
 
-exe "hi! PreProc"        .s:fmt_bold   .s:fg_t3 .s:bg_none
+exe "hi! PreProc"        .s:fmt_bold   .s:fg_t7 .s:bg_none
 "       *PreProc         generic Preprocessor
 "        Include         preprocessor #include
 "        Define          preprocessor #define
 "        Macro           same as Define
 "        PreCondit       preprocessor #if, #else, #endif, etc.
 
-exe "hi! Type"           .s:fmt_bold   .s:fg_t7 .s:bg_none
+exe "hi! Type"           .s:fmt_none   .s:fg_t7 .s:bg_none
+exe "hi! StorageClass"   .s:fmt_bold   .s:fg_t7 .s:bg_none
 "       *Type            int, long, char, etc.
 "        StorageClass    static, register, volatile, etc.
 "        Structure       struct, union, enum, etc.
 "        Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_bold   .s:fg_t5 .s:bg_none
+exe "hi! Special"        .s:fmt_bold   .s:fg_o1 .s:bg_none
+exe "hi! SpecialComment" .s:fmt_none   .s:fg_t7 .s:bg_none
+exe "hi! pythonDoctest"      .s:fmt_none .s:fg_o2 .s:bg_none
+exe "hi! pythonDoctestValue" .s:fmt_none .s:fg_o3 .s:bg_none
 "       *Special         any special symbol
 "        SpecialChar     special character in a constant
 "        Tag             you can use CTRL-] on this
@@ -273,7 +281,7 @@ exe "hi! Todo"           .s:fmt_undr   .s:fg_o5 .s:bg_none
 exe "hi! SpecialKey"     .s:fmt_bold   .s:fg_o4 .s:bg_t2
 exe "hi! NonText"        .s:fmt_bold   .s:fg_o4 .s:bg_none
 exe "hi! StatusLine"     .s:fmt_none   .s:fg_o4 .s:bg_t3
-exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_o2 .s:bg_t3
+exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_t4 .s:bg_t1
 exe "hi! Visual"         .s:fmt_none   .s:fg_t0 .s:bg_t5
 exe "hi! Directory"      .s:fmt_none   .s:fg_t7 .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_r1 .s:bg_none
@@ -292,10 +300,10 @@ exe "hi! WildMenu"       .s:fmt_none   .s:fg_o4  .s:bg_t2
 exe "hi! Folded"         .s:fmt_undr   .s:fg_t7  .s:bg_t2
 exe "hi! FoldColumn"     .s:fmt_none   .s:fg_t7  .s:bg_t2
 
-exe "hi! DiffAdd"        .s:fmt_bold   .s:fg_t6 .s:bg_t1 .s:sp_t6
-exe "hi! DiffChange"     .s:fmt_bold   .s:fg_o0 .s:bg_t1 .s:sp_o0
-exe "hi! DiffDelete"     .s:fmt_bold   .s:fg_r0 .s:bg_t1 .s:sp_r0
-exe "hi! DiffText"       .s:fmt_bold   .s:fg_o4 .s:bg_t1 .s:sp_o4
+exe "hi! DiffAdd"        .s:fmt_bold   .s:fg_t7 .s:bg_t1 .s:sp_t7
+exe "hi! DiffChange"     .s:fmt_bold   .s:fg_o3 .s:bg_t1 .s:sp_o3
+exe "hi! DiffDelete"     .s:fmt_bold   .s:fg_r1 .s:bg_t1 .s:sp_r1
+exe "hi! DiffText"       .s:fmt_bold   .s:fg_o1 .s:bg_t1 .s:sp_o1
 
 exe "hi! SignColumn"     .s:fmt_none   .s:fg_o4
 exe "hi! Conceal"        .s:fmt_none   .s:fg_o2   .s:bg_none
@@ -321,9 +329,21 @@ exe "hi! MatchParen"     .s:fmt_bold   .s:fg_o5     .s:bg_none
 " yajs.vim JavaScript highlighting "{{{
 " ---------------------------------------------------------------------
 
-" Highlight let, const, var, new as keywords
-exe "hi! javascriptVariable"             .s:fmt_bold .s:fg_o1
-exe "hi! javascriptOperator"             .s:fmt_bold .s:fg_o1
+" Highlight let, const, var, new, => as keywords
+exe "hi! javascriptVariable"             .s:fmt_bold .s:fg_t7
+exe "hi! javascriptOperator"             .s:fmt_bold .s:fg_t7
+exe "hi! javascriptArrowFunc"            .s:fmt_none .s:fg_t4
+
+" Highlight braces and brackets like keywords
+"exe "hi! javascriptBrackets"             .s:fmt_none .s:fg_t4
+"exe "hi! javascriptBraces"               .s:fmt_none .s:fg_t4
+"exe "hi! javascriptEndColons"            .s:fmt_none .s:fg_t4
+
+" Don't highlight function arguments as 'Special'
+exe "hi! javascriptFuncArg"              .s:fmt_none .s:fg_o2
+
+" Highlight object keys as 'Function'
+exe "hi! javascriptObjectLabel"          .s:fmt_none .s:fg_o1
 
 " Don't highlight special variable names as keywords
 for i in ['DOMDoc', 'DOMElem', 'DOMEvent', 'DOMNode', 'DOMStorage', 'Intl',
@@ -331,7 +351,7 @@ for i in ['DOMDoc', 'DOMElem', 'DOMEvent', 'DOMNode', 'DOMStorage', 'Intl',
     \'Promise', 'RegExp', 'ES6Set', 'String', 'Symbol', 'File', 'FileReader',
     \'FileList', 'Blob', 'URLUtils', 'URL', 'Console', 'Crypto', 'SubtleCrypto',
     \'Headers', 'Request', 'Response', 'BOMHistory', 'BOMLocation',
-    \'BOMNavigator', 'ServiceWorker', 'BOMWindow', 'XHR']
+    \'BOMNavigator', 'ServiceWorker', 'BOMWindow', 'XHR', 'Cache']
   exe 'hi! javascript' .i .'Prop'         .s:fmt_none .s:fg_o3
   exe 'hi! javascript' .i .'Method'       .s:fmt_none .s:fg_o2
   exe 'hi! javascript' .i .'StaticProp'   .s:fmt_none .s:fg_o3
@@ -342,6 +362,8 @@ exe "hi! javascriptDOMEventTargetMethod" .s:fmt_none .s:fg_o2
 exe "hi! javascriptProxyAPI"             .s:fmt_none .s:fg_o2
 
 "}}}
+
+
 
 " TODO: Consider adding other Solarized color specifications back in
 
